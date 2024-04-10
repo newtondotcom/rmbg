@@ -12,4 +12,4 @@ RUN mkdir -p uploads
 
 EXPOSE 5000
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "uwsgi", "--http", "0.0.0.0:5000", "--module", "app:app", "--master", "--processes", "4", "--threads", "2" ]
